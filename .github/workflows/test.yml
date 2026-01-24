@@ -7,18 +7,62 @@ on:
     branches: [ main, master ]
 
 jobs:
-  test:
+  test-func0:
+    name: Test logic_func0
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
+    - uses: actions/checkout@v4
     - name: Install Icarus Verilog
       run: sudo apt-get update && sudo apt-get install -y iverilog
+    - name: Compile
+      run: iverilog -o sim.vvp -s logic_func0_tb rtl/logic_func0.v tb/logic_func0_tb.v
+    - name: Run Testbench
+      run: vvp sim.vvp
 
-    - name: Compile Verilog
+  test-func1:
+    name: Test logic_func1
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Icarus Verilog
+      run: sudo apt-get update && sudo apt-get install -y iverilog
+    - name: Compile
+      run: iverilog -o sim.vvp -s logic_func1_tb rtl/logic_func1.v tb/logic_func1_tb.v
+    - name: Run Testbench
+      run: vvp sim.vvp
+
+  test-func2:
+    name: Test logic_func2
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Icarus Verilog
+      run: sudo apt-get update && sudo apt-get install -y iverilog
+    - name: Compile
+      run: iverilog -o sim.vvp -s logic_func2_tb rtl/logic_func2.v tb/logic_func2_tb.v
+    - name: Run Testbench
+      run: vvp sim.vvp
+
+  test-func3:
+    name: Test logic_func3
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Icarus Verilog
+      run: sudo apt-get update && sudo apt-get install -y iverilog
+    - name: Compile
+      run: iverilog -o sim.vvp -s logic_func3_tb rtl/logic_func3.v tb/logic_func3_tb.v
+    - name: Run Testbench
+      run: vvp sim.vvp
+
+  test-integration:
+    name: Test integration (logic_functions_top)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Icarus Verilog
+      run: sudo apt-get update && sudo apt-get install -y iverilog
+    - name: Compile
       run: iverilog -o sim.vvp -s logic_functions_top_tb rtl/*.v tb/logic_functions_top_tb.v
-
     - name: Run Testbench
       run: vvp sim.vvp
