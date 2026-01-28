@@ -114,9 +114,15 @@ tb/
 
 ---
 
+## RTL Diagram
+
+Open **`rtl_diagram.pdf`** to see how the modules connect together in `logic_functions_top`. The diagram shows the port names for each module.
+
+---
+
 ## Hints
 
 - **Start with logic_func0.v** - copy its structure for your modules
-- **Port names matter** - each module uses different names; check the requirements
+- **Port names matter** - each module uses different names; check the diagram
 - **Test incrementally** - verify each module before moving to instantiation
 - **Use parentheses** - clarify operator precedence in complex expressions
