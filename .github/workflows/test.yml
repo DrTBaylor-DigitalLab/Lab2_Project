@@ -17,7 +17,9 @@ jobs:
     - name: Compile
       run: iverilog -o sim.vvp -s logic_func0_tb rtl/logic_func0.v tb/logic_func0_tb.v
     - name: Run Testbench
-      run: vvp sim.vvp
+      run: |
+        vvp sim.vvp | tee output.txt
+        grep -q "ALL TESTS PASSED" output.txt
 
   test-func1:
     name: Test logic_func1
@@ -29,7 +31,9 @@ jobs:
     - name: Compile
       run: iverilog -o sim.vvp -s logic_func1_tb rtl/logic_func1.v tb/logic_func1_tb.v
     - name: Run Testbench
-      run: vvp sim.vvp
+      run: |
+        vvp sim.vvp | tee output.txt
+        grep -q "ALL TESTS PASSED" output.txt
 
   test-func2:
     name: Test logic_func2
@@ -41,7 +45,9 @@ jobs:
     - name: Compile
       run: iverilog -o sim.vvp -s logic_func2_tb rtl/logic_func2.v tb/logic_func2_tb.v
     - name: Run Testbench
-      run: vvp sim.vvp
+      run: |
+        vvp sim.vvp | tee output.txt
+        grep -q "ALL TESTS PASSED" output.txt
 
   test-func3:
     name: Test logic_func3
@@ -53,7 +59,9 @@ jobs:
     - name: Compile
       run: iverilog -o sim.vvp -s logic_func3_tb rtl/logic_func3.v tb/logic_func3_tb.v
     - name: Run Testbench
-      run: vvp sim.vvp
+      run: |
+        vvp sim.vvp | tee output.txt
+        grep -q "ALL TESTS PASSED" output.txt
 
   test-integration:
     name: Test integration (logic_functions_top)
@@ -65,4 +73,6 @@ jobs:
     - name: Compile
       run: iverilog -o sim.vvp -s logic_functions_top_tb rtl/*.v tb/logic_functions_top_tb.v
     - name: Run Testbench
-      run: vvp sim.vvp
+      run: |
+        vvp sim.vvp | tee output.txt
+        grep -q "ALL TESTS PASSED" output.txt
